@@ -86,7 +86,7 @@ class SimpleSearchBackend(BaseSearchBackend):
                     result._object = match
                     results.append(result)
 
-        return {"results": results, "hits": hits}
+        return {"results": results[kwargs.get('start_offset', 0):], "hits": hits}
 
     def prep_value(self, db_field, value):
         return value
